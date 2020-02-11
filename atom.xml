@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://qui3t0wl.github.io/"/>
-  <updated>2020-02-01T23:28:05.279Z</updated>
+  <updated>2020-02-11T12:42:40.703Z</updated>
   <id>http://qui3t0wl.github.io/</id>
   
   <author>
@@ -15,6 +15,34 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>HackTM CTF 2020</title>
+    <link href="http://qui3t0wl.github.io/2020/02/11/hacktm-ctf-2020/"/>
+    <id>http://qui3t0wl.github.io/2020/02/11/hacktm-ctf-2020/</id>
+    <published>2020-02-11T12:06:13.000Z</published>
+    <updated>2020-02-11T12:42:40.703Z</updated>
+    
+    <content type="html"><![CDATA[<p>To start february in the best way I managed to participated in a CTF to improve my forensics skills - the <strong>HackTM CTF (Quals) 2020</strong>. I ended in 253rd place out of 748 teams.</p><p>Saddly, I only entered in the second day of the competition and only managed to solve 2 challenges. One easy and another one more complex.</p><p>The first one was a kind of one-point-challenge and the other was a USB capture with some input devices communicating in. Recently, I did a similar challenge in HTB where I had to decode the keyboard inputs.</p><p>In this challenge I had to extract a zip file with a text file inside, but firtly I needed to found the password that protects the zip file.</p><p>The password was in the keyboard input…</p><p>My walkthrought it&#39;s in my <a href="https://github.com/Qui3t0wL/writeups/tree/master/2020.02.01%20-%20HackTM%20CTF%202020" target="_blank" rel="noopener">github repo</a>.</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;To start february in the best way I managed to participated in a CTF to improve my forensics skills - the &lt;strong&gt;HackTM CTF (Quals) 2020
+      
+    
+    </summary>
+    
+    
+      <category term="CTF" scheme="http://Qui3t0wL.github.io/categories/CTF/"/>
+    
+    
+      <category term="Forensics" scheme="http://Qui3t0wL.github.io/tags/Forensics/"/>
+    
+      <category term="PCAP" scheme="http://Qui3t0wL.github.io/tags/PCAP/"/>
+    
+  </entry>
   
   <entry>
     <title>&lt;/ Hello World &gt;</title>
