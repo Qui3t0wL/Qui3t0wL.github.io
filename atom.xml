@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://qui3t0wl.github.io/"/>
-  <updated>2020-02-11T12:42:40.703Z</updated>
+  <updated>2020-04-13T21:24:15.057Z</updated>
   <id>http://qui3t0wl.github.io/</id>
   
   <author>
@@ -15,6 +15,41 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>AngstromCTF 2020</title>
+    <link href="http://qui3t0wl.github.io/2020/03/29/angstrom-ctf-2020/"/>
+    <id>http://qui3t0wl.github.io/2020/03/29/angstrom-ctf-2020/</id>
+    <published>2020-03-29T21:07:15.000Z</published>
+    <updated>2020-04-13T21:24:15.057Z</updated>
+    
+    <content type="html"><![CDATA[<p><img src="./images/angstrom2020.png" alt="angstrom CTF 2020"></p><p>Only now I have time to put writing in order. It’s the only good part of the quarantine time we live…</p><p>This time I bring to you my point of view of the <strong>Angstrom CTF</strong> I’ve entered in march, from 14th to 19th. I tooked a bit more than the usual ctf’s but it worth it, mostly because I could learn a lot during the game. I think it was the first time I could reverse some stuff (3 challenges) using <code>Ghidra</code> and <code>gdb</code> - it was really cool! :smile:</p><p>This ctf competition had Misc, Web, Crypto, Binary and Rev categories with 47 total challenges. During the five competition days I could manage to solve ten of them, and the eleventh I took the flag a few minutes after the end of the competition. Bad luck…</p><p>I ended up in <strong>592nd place</strong> with 575 points. You can view my complete writeup in my <a href="https://github.com/Qui3t0wL/writeups/tree/master/2020.03.14%20-%20%C3%A5ngstromCTF%202020" target="_blank" rel="noopener">github repo</a>.</p><p>The organizers release a public repository with the solves for the challenges at <a href="https://hackmd.io/@ZX59lFiyRu6ODiM2rFw7Wg/ry5FDNeI8#" target="_blank" rel="noopener">https://hackmd.io/@ZX59lFiyRu6ODiM2rFw7Wg/ry5FDNeI8#</a></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;&lt;img src=&quot;./images/angstrom2020.png&quot; alt=&quot;angstrom CTF 2020&quot;&gt;&lt;/p&gt;
+&lt;p&gt;Only now I have time to put writing in order. It’s the only good par
+      
+    
+    </summary>
+    
+    
+      <category term="CTF" scheme="http://Qui3t0wL.github.io/categories/CTF/"/>
+    
+    
+      <category term="Forensics" scheme="http://Qui3t0wL.github.io/tags/Forensics/"/>
+    
+      <category term="PCAP" scheme="http://Qui3t0wL.github.io/tags/PCAP/"/>
+    
+      <category term="Rev" scheme="http://Qui3t0wL.github.io/tags/Rev/"/>
+    
+      <category term="Web" scheme="http://Qui3t0wL.github.io/tags/Web/"/>
+    
+      <category term="Crypto" scheme="http://Qui3t0wL.github.io/tags/Crypto/"/>
+    
+  </entry>
   
   <entry>
     <title>HackTM CTF 2020</title>
