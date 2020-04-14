@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://qui3t0wl.github.io/"/>
-  <updated>2020-04-13T21:35:24.591Z</updated>
+  <updated>2020-04-14T18:44:05.368Z</updated>
   <id>http://qui3t0wl.github.io/</id>
   
   <author>
@@ -21,16 +21,16 @@
     <link href="http://qui3t0wl.github.io/2020/03/29/angstrom-ctf-2020/"/>
     <id>http://qui3t0wl.github.io/2020/03/29/angstrom-ctf-2020/</id>
     <published>2020-03-29T21:07:15.000Z</published>
-    <updated>2020-04-13T21:35:24.591Z</updated>
+    <updated>2020-04-14T18:44:05.368Z</updated>
     
-    <content type="html"><![CDATA[<p><img src="./angstrom2020.png" alt="angstrom CTF 2020"></p><p>Only now I have time to put writing in order. It&#39;s the only good part of the quarantine time we live…</p><p>This time I bring to you my point of view of the <strong>Angstrom CTF</strong> I&#39;ve entered in march, from 14th to 19th. I tooked a bit more than the usual ctf’s but it worth it, mostly because I could learn a lot during the game. I think it was the first time I could reverse some stuff (3 challenges) using <code>Ghidra</code> and <code>gdb</code> - it was really cool! :smile:</p><p>This ctf competition had Misc, Web, Crypto, Binary and Rev categories with 47 total challenges. During the five competition days I could manage to solve ten of them, and the eleventh I took the flag a few minutes after the end of the competition. Bad luck…</p><p>I ended up in <strong>592nd place</strong> with 575 points. You can view my complete writeup in my <a href="https://github.com/Qui3t0wL/writeups/tree/master/2020.03.14%20-%20%C3%A5ngstromCTF%202020" target="_blank" rel="noopener">github repo</a>.</p><p>The organizers release a public repository with the solves for the challenges at <a href="https://hackmd.io/@ZX59lFiyRu6ODiM2rFw7Wg/ry5FDNeI8#" target="_blank" rel="noopener">https://hackmd.io/@ZX59lFiyRu6ODiM2rFw7Wg/ry5FDNeI8#</a></p>]]></content>
+    <content type="html"><![CDATA[<p><img src="./angstrom2020.png" alt="angstrom CTF 2020" /></p><p>Only now I have time to put writing in order. It’s the only good part of the quarantine time we live…</p><p>This time I bring to you my point of view of the <strong>Angstrom CTF</strong> I’ve entered in march, from 14th to 19th. I tooked a bit more than the usual ctf’s but it worth it, mostly because I could learn a lot during the game. I think it was the first time I could reverse some stuff (3 challenges) using <code>Ghidra</code> and <code>gdb</code> - it was really cool! 😎</p><p>This ctf competition had Misc, Web, Crypto, Binary and Rev categories with 47 total challenges. During the five competition days I could manage to solve ten of them, and the eleventh I took the flag a few minutes after the end of the competition. Bad luck…</p><p>I ended up in <strong>592<sup>nd</sup> place</strong> with 575 points. You can view my complete writeup in my <a href="https://github.com/Qui3t0wL/writeups/tree/master/2020.03.14%20-%20%C3%A5ngstromCTF%202020" target="_blank" rel="noopener">github repo</a>.</p><p>The organizers release a public repository with the solves for the challenges at <a href="https://hackmd.io/@ZX59lFiyRu6ODiM2rFw7Wg/ry5FDNeI8#" target="_blank" rel="noopener">https://hackmd.io/@ZX59lFiyRu6ODiM2rFw7Wg/ry5FDNeI8#</a></p>]]></content>
     
     <summary type="html">
     
       
       
-        &lt;p&gt;&lt;img src=&quot;./angstrom2020.png&quot; alt=&quot;angstrom CTF 2020&quot;&gt;&lt;/p&gt;
-&lt;p&gt;Only now I have time to put writing in order. It&amp;#39;s the only good part o
+        &lt;p&gt;&lt;img src=&quot;./angstrom2020.png&quot; alt=&quot;angstrom CTF 2020&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;Only now I have time to put writing in order. It’s the only good part of 
       
     
     </summary>
@@ -56,9 +56,9 @@
     <link href="http://qui3t0wl.github.io/2020/02/11/hacktm-ctf-2020/"/>
     <id>http://qui3t0wl.github.io/2020/02/11/hacktm-ctf-2020/</id>
     <published>2020-02-11T12:06:13.000Z</published>
-    <updated>2020-02-11T12:42:40.703Z</updated>
+    <updated>2020-04-14T18:43:08.676Z</updated>
     
-    <content type="html"><![CDATA[<p>To start february in the best way I managed to participated in a CTF to improve my forensics skills - the <strong>HackTM CTF (Quals) 2020</strong>. I ended in 253rd place out of 748 teams.</p><p>Saddly, I only entered in the second day of the competition and only managed to solve 2 challenges. One easy and another one more complex.</p><p>The first one was a kind of one-point-challenge and the other was a USB capture with some input devices communicating in. Recently, I did a similar challenge in HTB where I had to decode the keyboard inputs.</p><p>In this challenge I had to extract a zip file with a text file inside, but firtly I needed to found the password that protects the zip file.</p><p>The password was in the keyboard input…</p><p>My walkthrought it&#39;s in my <a href="https://github.com/Qui3t0wL/writeups/tree/master/2020.02.01%20-%20HackTM%20CTF%202020" target="_blank" rel="noopener">github repo</a>.</p>]]></content>
+    <content type="html"><![CDATA[<p>To start february in the best way I managed to participated in a CTF to improve my forensics skills - the <strong>HackTM CTF (Quals) 2020</strong>. I ended in 253<sup>rd</sup> place out of 748 teams.</p><p>Saddly, I only entered in the second day of the competition and only managed to solve 2 challenges. One easy and another one more complex.</p><p>The first one was a kind of one-point-challenge and the other was a USB capture with some input devices communicating in. Recently, I did a similar challenge in HTB where I had to decode the keyboard inputs.</p><p>In this challenge I had to extract a zip file with a text file inside, but firstly I needed to found the password that protects the zip file.</p><p>The password was in the keyboard input…</p><p>My walkthrought it’s in my <a href="https://github.com/Qui3t0wL/writeups/tree/master/2020.02.01%20-%20HackTM%20CTF%202020" target="_blank" rel="noopener">github repo</a>.</p>]]></content>
     
     <summary type="html">
     
@@ -86,7 +86,7 @@
     <published>2020-02-01T23:28:05.279Z</published>
     <updated>2020-02-01T23:28:05.279Z</updated>
     
-    <content type="html"><![CDATA[<p>Like programming, this is my first post here.</p><p>I hope you enjoy my thoughts and feel free for share yours with me.</p><p>Here I will have some content about cyber and stuff related to it.</p><p>Enjoy! ;)</p>]]></content>
+    <content type="html"><![CDATA[<p>Like programming, this is my first post here.</p><p>I hope you enjoy my thoughts and feel free for share yours with me.</p><p>Here I will have some content about cyber and stuff related to it.</p><p>Enjoy! 😉</p>]]></content>
     
     <summary type="html">
     
