@@ -31,7 +31,7 @@
 <meta property="og:image" content="http:&#x2F;&#x2F;qui3t0wl.github.io&#x2F;2020&#x2F;04&#x2F;17&#x2F;hexion-ctf-2020&#x2F;mirage1.png">
 <meta property="og:image" content="http:&#x2F;&#x2F;qui3t0wl.github.io&#x2F;2020&#x2F;04&#x2F;17&#x2F;hexion-ctf-2020&#x2F;mirage2.png">
 <meta property="og:image" content="http:&#x2F;&#x2F;qui3t0wl.github.io&#x2F;2020&#x2F;04&#x2F;17&#x2F;hexion-ctf-2020&#x2F;image.png">
-<meta property="og:updated_time" content="2020-04-22T21:57:42.497Z">
+<meta property="og:updated_time" content="2020-04-22T22:27:45.593Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http:&#x2F;&#x2F;qui3t0wl.github.io&#x2F;2020&#x2F;04&#x2F;17&#x2F;hexion-ctf-2020&#x2F;about.png">
   <!-- Canonical links -->
@@ -455,8 +455,8 @@ Author: Idan</p>
 </blockquote>
 <p>This challenge was my personal goal in this CTF, mainly because it’s a <code>.pcap</code> challenge - my prefered.</p>
 <p>When I saw this usb <a href="./jerry.pcapng">.pcap</a> only with <code>URB_INTERRUPT in</code> frames I reminded my last usb capture from a previous CTF challenge: a capture from an usb flash drive and a keyboard. But this one don’t seems had the same standard in the <code>Leftover Capture Data</code>…</p>
-<p>Ok, if it wasn’t from a keyboard probably was from a mouse. Yeah the name of the challenge it <code>T&amp;J</code> - Tom &amp; Jerry (the cat and mouse). So I started learn how the <code>Leftover Capture Data</code> was decrypted and after some Googling I’ve found the <a href="https://www.usb.org/sites/default/files/documents/hid1_11.pdf" target="_blank" rel="noopener">USB specification</a>.</p>
-<p>There under the mouse specification I’ve found the way how mouse sends data (page 71): the 1<sup>st</sup> byte defines which button it’s pressed, the 2<sup>nd</sup> represents the X axis and the 3rd^byte the Y axis.</p>
+<p>Ok, if it wasn’t from a keyboard probably was from a mouse. Yeah the name of the challenge is <strong>T&amp;J</strong> - Tom &amp; Jerry (the cat and mouse). So I started learn how the <code>Leftover Capture Data</code> was decrypted and after some Googling I’ve found the <a href="https://www.usb.org/sites/default/files/documents/hid1_11.pdf" target="_blank" rel="noopener">USB specification</a>.</p>
+<p>There under the mouse specification I’ve found the way how mouse sends data (page 71): the 1<sup>st</sup> byte defines which button it’s pressed, the 2<sup>nd</sup> represents the X axis and the 3<sup>rd</sup> byte the Y axis.</p>
 <p>So I exported it into a text file using <code>tshark</code>:</p>
 <p><code>$ tshark -r jerry.pcapng -Y &quot;(usb.transfer_type == 0x01) &amp;&amp; (usb.src == \&quot;1.2.1\&quot;) &amp;&amp; !(usb.capdata == 00:00:00:00:00:00:00:00)&quot; -T fields -e usb.capdata &gt; data.txt</code></p>
 <p>I get all the <code>Leftover Capture Data</code> into <code>data.txt</code> file.</p>
