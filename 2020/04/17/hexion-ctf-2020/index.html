@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="Cache-Control" content="no-transform" />
+  <meta http-equiv="Cache-Control" content="no-siteapp" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="format-detection" content="telephone=no,email=no,adress=no">
+  <!-- Color theme for statusbar -->
+  <meta name="theme-color" content="#000000" />
+  <!-- 强制页面在当前窗口以独立页面显示,防止别人在框架里调用页面 -->
+  <meta http-equiv="window-target" content="_top" />
+  
+  
+  <title>Hexion CTF 2020 | Qui3t0wL</title>
+  <meta name="description" content="In between of my study for CCNA module #1 I could found a couple of hours, in the last sunday (April 12th 2020), to took part in the first CTF hosted by Hexion Team. The balance was quite positive, wi">
+<meta name="keywords" content="Forensics,PCAP">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hexion CTF 2020">
+<meta property="og:url" content="http:&#x2F;&#x2F;qui3t0wl.github.io&#x2F;2020&#x2F;04&#x2F;17&#x2F;hexion-ctf-2020&#x2F;index.html">
+<meta property="og:site_name" content="Qui3t0wL&#39;s blog">
+<meta property="og:description" content="In between of my study for CCNA module #1 I could found a couple of hours, in the last sunday (April 12th 2020), to took part in the first CTF hosted by Hexion Team. The balance was quite positive, wi">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="http:&#x2F;&#x2F;qui3t0wl.github.io&#x2F;2020&#x2F;04&#x2F;17&#x2F;hexion-ctf-2020&#x2F;about.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;qui3t0wl.github.io&#x2F;2020&#x2F;04&#x2F;17&#x2F;hexion-ctf-2020&#x2F;wk1.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;qui3t0wl.github.io&#x2F;2020&#x2F;04&#x2F;17&#x2F;hexion-ctf-2020&#x2F;mirage.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;qui3t0wl.github.io&#x2F;2020&#x2F;04&#x2F;17&#x2F;hexion-ctf-2020&#x2F;mirage2.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;qui3t0wl.github.io&#x2F;2020&#x2F;04&#x2F;17&#x2F;hexion-ctf-2020&#x2F;image.png">
+<meta property="og:updated_time" content="2020-04-22T21:48:54.851Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http:&#x2F;&#x2F;qui3t0wl.github.io&#x2F;2020&#x2F;04&#x2F;17&#x2F;hexion-ctf-2020&#x2F;about.png">
+  <!-- Canonical links -->
+  <link rel="canonical" href="http://qui3t0wl.github.io/2020/04/17/hexion-ctf-2020/index.html">
+  
+    <link rel="alternate" href="/atom.xml" title="Qui3t0wL&#39;s blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png" type="image/x-icon">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+  
+  
+    <link href="//cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.3.5/dist/jquery.fancybox.min.css" rel="stylesheet">
+  
+  
+</head>
+
+
+<body class="main-center" itemscope itemtype="http://schema.org/WebPage">
+  <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+  <div class="slimContent">
+    <div class="navbar-header">
+      
+      
+      <div class="profile-block text-center">
+        <a id="avatar" href="https://github.com/Qui3t0wL" target="_blank">
+          <img class="img-circle img-rotate" src="https://www.gravatar.com/avatar/aaec57675a04c01dc17626e93d5db54b?s=128" width="200" height="200">
+        </a>
+        <h2 id="name" class="hidden-xs hidden-sm">Qui3t0wL</h2>
+        <h3 id="title" class="hidden-xs hidden-sm hidden-md">Security &amp; Forensics Enthusiast</h3>
+        <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i> Lisbon, PT</small>
+      </div>
+      
+      <div class="search" id="search-form-wrap">
+
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="Search" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i class="icon icon-search"></i></button>
+            </span>
+        </div>
+    </form>
+    <div class="ins-search">
+  <div class="ins-search-mask"></div>
+  <div class="ins-search-container">
+    <div class="ins-input-wrapper">
+      <input type="text" class="ins-search-input" placeholder="Type something..." x-webkit-speech />
+      <button type="button" class="close ins-close ins-selectable" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+    </div>
+    <div class="ins-section-wrapper">
+      <div class="ins-section-container"></div>
+    </div>
+  </div>
+</div>
+
+
+</div>
+      <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+      <ul class="nav navbar-nav main-nav ">
+        
+        
+        <li class="menu-item menu-item-home">
+          <a href="/.">
+            
+            <i class="icon icon-code"></i>
+            
+            <span class="menu-title">Home</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives">
+            
+            <i class="icon icon-archives-fill"></i>
+            
+            <span class="menu-title">Archives</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories">
+            
+            <i class="icon icon-folder"></i>
+            
+            <span class="menu-title">Categories</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags">
+            
+            <i class="icon icon-tags"></i>
+            
+            <span class="menu-title">Tags</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-repository">
+          <a href="/repository">
+            
+            <i class="icon icon-code-fork"></i>
+            
+            <span class="menu-title">Repository</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-links">
+          <a href="/links">
+            
+            <i class="icon icon-link"></i>
+            
+            <span class="menu-title">Links</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about">
+            
+            <i class="icon icon-share"></i>
+            
+            <span class="menu-title">About</span>
+          </a>
+        </li>
+        
+      </ul>
+      
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/Qui3t0wL" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
+        
+        <li><a href="https://twitter.com/mochotranquilo" target="_blank" title="Twitter" data-toggle=tooltip data-placement=top><i class="icon icon-twitter"></i></a></li>
+        
+        <li><a href="/atom.xml" target="_blank" title="Rss" data-toggle=tooltip data-placement=top><i class="icon icon-rss"></i></a></li>
+        
+    </ul>
+
+    </nav>
+  </div>
+</header>
+
+  
+    <aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">Board</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content">
+                <script src="https://www.hackthebox.eu/badge/186207"></script>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget-body">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/CTF/">CTF</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Void/">Void</a><span class="category-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget-body">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Crypto/" rel="tag">Crypto</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Forensics/" rel="tag">Forensics</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PCAP/" rel="tag">PCAP</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Rev/" rel="tag">Rev</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Web/" rel="tag">Web</a><span class="tag-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">Archive</h3>
+    <div class="widget-body">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">February 2020</a><span class="archive-list-count">2</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget-body">
+      <ul class="recent-post-list list-unstyled ">
+        
+          <li>
+            
+            <div class="item-thumb">
+              <a href="/2020/04/17/hexion-ctf-2020/" class="thumb">
+    
+    
+        <span class="thumb-image thumb-none"></span>
+    
+</a>
+
+            </div>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/CTF/">CTF</a>
+              </p>
+              <p class="item-title">
+                <a href="/2020/04/17/hexion-ctf-2020/" class="title">Hexion CTF 2020</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2020-04-17T10:13:28.000Z" itemprop="datePublished">17-04-2020</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-thumb">
+              <a href="/2020/03/29/angstrom-ctf-2020/" class="thumb">
+    
+    
+        <span class="thumb-image thumb-none"></span>
+    
+</a>
+
+            </div>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/CTF/">CTF</a>
+              </p>
+              <p class="item-title">
+                <a href="/2020/03/29/angstrom-ctf-2020/" class="title">AngstromCTF 2020</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2020-03-29T21:07:15.000Z" itemprop="datePublished">29-03-2020</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-thumb">
+              <a href="/2020/02/11/hacktm-ctf-2020/" class="thumb">
+    
+    
+        <span class="thumb-image thumb-none"></span>
+    
+</a>
+
+            </div>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/CTF/">CTF</a>
+              </p>
+              <p class="item-title">
+                <a href="/2020/02/11/hacktm-ctf-2020/" class="title">HackTM CTF 2020</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2020-02-11T12:06:13.000Z" itemprop="datePublished">11-02-2020</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-thumb">
+              <a href="/2020/02/01/hello-world/" class="thumb">
+    
+    
+        <span class="thumb-image thumb-none"></span>
+    
+</a>
+
+            </div>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/Void/">Void</a>
+              </p>
+              <p class="item-title">
+                <a href="/2020/02/01/hello-world/" class="title">&lt;/ Hello World &gt;</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2020-02-01T23:28:05.279Z" itemprop="datePublished">01-02-2020</time>
+              </p>
+            </div>
+          </li>
+          
+      </ul>
+    </div>
+  </div>
+  
+
+    
+  </div>
+</aside>
+
+  
+  
+<main class="main" role="main">
+  <div class="content">
+  <article id="post-hexion-ctf-2020" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Hexion CTF 2020
+    </h1>
+  
+
+      
+      <div class="article-meta">
+        <span class="article-date">
+    <i class="icon icon-calendar-check"></i>
+	<a href="/2020/04/17/hexion-ctf-2020/" class="article-date">
+	  <time datetime="2020-04-17T10:13:28.000Z" itemprop="datePublished">17-04-2020</time>
+	</a>
+</span>
+        
+  <span class="article-category">
+    <i class="icon icon-folder"></i>
+    <a class="article-category-link" href="/categories/CTF/">CTF</a>
+  </span>
+
+        
+  <span class="article-tag">
+    <i class="icon icon-tags"></i>
+	<a class="article-tag-link" href="/tags/Forensics/" rel="tag">Forensics</a>, <a class="article-tag-link" href="/tags/PCAP/" rel="tag">PCAP</a>
+  </span>
+
+
+        
+
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2020/04/17/hexion-ctf-2020/#comments" class="article-comment-link">Comments</a></span>
+        
+	
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">Word Count: 1.1k(words)</span>
+	
+	
+		<span class="post-readcount hidden-xs" itemprop="timeRequired">Read Count: 6(minutes)</span>
+	
+
+      </div>
+    </div>
+    <div class="article-entry marked-body" itemprop="articleBody">
+      
+        <p>In between of my study for CCNA module #1 I could found a couple of hours, in the last sunday (April 12<sup>th</sup> 2020), to took part in the first CTF hosted by <a href="https://twitter.com/hexion_team" target="_blank" rel="noopener">Hexion Team</a>.</p>
+<p>The balance was quite positive, with 4 solves: 3 of them was the easiest that worth a fixed values (50 and 100 points) and the other one, a pcap file. I ended up in 77<sup>th</sup> position with 1089 points amongst 429 teams.</p>
+<h2 id="about-misc-50-pts"><a class="markdownIt-Anchor" href="#about-misc-50-pts"></a> <strong>About</strong> - Misc (50 pts)</h2>
+<p><strong>Description</strong>:</p>
+<blockquote>
+<p>Please read the rules 😃</p>
+</blockquote>
+<p>This challenge had 1013 solves and was the entry point in the game. In the rules page we could found all the information about the CTF. At the end we found the ctf flag format and our flag.</p>
+<p><img src="./about.png" alt="about" /></p>
+<p><code>hexCTF{mu5t_b3_7he_eas1est_fl4g_y0u_g0t}</code></p>
+<h2 id="well-known-web-100pts"><a class="markdownIt-Anchor" href="#well-known-web-100pts"></a> <strong>Well Known</strong> - Web (100pts)</h2>
+<blockquote>
+<p>Well… it’s known (:<br />
+<br />
+<a href="https://wk.hexionteam.com" target="_blank" rel="noopener">https://wk.hexionteam.com</a> <br />
+<br />
+Author: Yarin</p>
+</blockquote>
+<p>This challenge had 277 solves and was easy, you only had to know where to search. My approach it’s always the same, with a quick lookup in the page source code, next in the <code>.htaccess</code> and <code>robots.txt</code> (if exists). After that we’ll see…</p>
+<p><img src="./wk1.png" alt="wk site" /></p>
+<p>It was an empty page with a H1 stating <code>&quot;404 Not Found&quot;</code>. So I jumped for the <code>.htaccess</code> and I got another <code>&quot;404 Not Found&quot;</code>. Next I checked for the existence of <code>robots.txt</code> and I had success.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">Sitemap: sitemap.xml</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">Allow: *</span></pre></td></tr></table></figure>
+<p>This page points me to another one, so I went to the <code>sitemap.xml</code>.</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">urlset</span> <span class="attr">xmlns</span>=<span class="string">"http://www.sitemaps.org/schemas/sitemap/0.9"</span>&gt;</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">   <span class="tag">&lt;<span class="name">url</span>&gt;</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">      <span class="tag">&lt;<span class="name">loc</span>&gt;</span>https://wk.hexionteam.com/404.html<span class="tag">&lt;/<span class="name">loc</span>&gt;</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">   <span class="tag">&lt;/<span class="name">url</span>&gt;</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line">  <span class="tag">&lt;<span class="name">url</span>&gt;</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line">      <span class="tag">&lt;<span class="name">loc</span>&gt;</span>https://wk.hexionteam.com/robots.txt<span class="tag">&lt;/<span class="name">loc</span>&gt;</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">8</span></pre></td><td class="code"><pre><span class="line">   <span class="tag">&lt;/<span class="name">url</span>&gt;</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">9</span></pre></td><td class="code"><pre><span class="line">  <span class="tag">&lt;<span class="name">url</span>&gt;</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">10</span></pre></td><td class="code"><pre><span class="line">      <span class="tag">&lt;<span class="name">loc</span>&gt;</span>https://wk.hexionteam.com/.well-known/security.txt<span class="tag">&lt;/<span class="name">loc</span>&gt;</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">11</span></pre></td><td class="code"><pre><span class="line">   <span class="tag">&lt;/<span class="name">url</span>&gt;</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">12</span></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;/<span class="name">urlset</span>&gt;</span></span></pre></td></tr></table></figure>
+<p>Here we get 3 links and we already checked two. So, let’s check the <code>.well-known/security.txt</code>.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">Flag: hexCTF&#123;th4nk_y0u_liv3_0v3rfl0w&#125;</span></pre></td></tr></table></figure>
+<p>And we have our flag! 🎆</p>
+<p><code>hexCTF{th4nk_y0u_liv3_0v3rfl0w}</code></p>
+<h2 id="mirage-misc-100pts"><a class="markdownIt-Anchor" href="#mirage-misc-100pts"></a> <strong>Mirage</strong> - Misc (100pts)</h2>
+<blockquote>
+<p>“Your eyes can deceive you; don’t trust them.”<br />
+<em>– Obi-Wan Kenobi</em><br />
+<br />
+<a href="https://mirage.hexionteam.com" target="_blank" rel="noopener">https://mirage.hexionteam.com</a> <br />
+<br />
+Author: Idan</p>
+</blockquote>
+<p>The site has a simple textbox and a strange statement similar to the flag format.</p>
+<p><img src="./mirage.png" alt="mirage" /></p>
+<p>I typed some characters into this textbox and those ones didn’t match those I had typed in. As I said before this seems to be similar to the flag format, so I tried type the beginning of the flag <code>hexCTF{</code> and I got this.</p>
+<p><img src="./mirage2.png" alt="mirage" /></p>
+<p>I matches! It’s the flag! Now I have to decrypt it.<br />
+The first thing I had done was view the source code of the page.</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">    <span class="tag">&lt;<span class="name">head</span>&gt;</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">        <span class="tag">&lt;<span class="name">title</span>&gt;</span><span class="tag">&lt;/<span class="name">title</span>&gt;</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">    <span class="tag">&lt;/<span class="name">head</span>&gt;</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">    <span class="tag">&lt;<span class="name">style</span>&gt;</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line"><span class="css">        <span class="selector-class">.centered</span> &#123;</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line">            position: fixed;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">8</span></pre></td><td class="code"><pre><span class="line">            top: 50%;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">9</span></pre></td><td class="code"><pre><span class="line">            left: 50%;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">10</span></pre></td><td class="code"><pre><span class="line">            transform: translate(-50%, -50%);</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">11</span></pre></td><td class="code"><pre><span class="line">        &#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">12</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">13</span></pre></td><td class="code"><pre><span class="line"><span class="css">        @<span class="keyword">font-face</span> &#123;</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">14</span></pre></td><td class="code"><pre><span class="line">            font-family: hexFont;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">15</span></pre></td><td class="code"><pre><span class="line">            src: url("assets/hexfont.ttf");</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">16</span></pre></td><td class="code"><pre><span class="line">        &#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">17</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">18</span></pre></td><td class="code"><pre><span class="line">        input &#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">19</span></pre></td><td class="code"><pre><span class="line">            font-family: hexFont;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">20</span></pre></td><td class="code"><pre><span class="line">            font-size: 40px;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">21</span></pre></td><td class="code"><pre><span class="line">            font: url</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">22</span></pre></td><td class="code"><pre><span class="line">        &#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">23</span></pre></td><td class="code"><pre><span class="line">    <span class="tag">&lt;/<span class="name">style</span>&gt;</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">24</span></pre></td><td class="code"><pre><span class="line">    <span class="tag">&lt;<span class="name">body</span>&gt;</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">25</span></pre></td><td class="code"><pre><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"centered"</span> <span class="attr">style</span>=<span class="string">"text-align: center;"</span>&gt;</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">26</span></pre></td><td class="code"><pre><span class="line">            <span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"assets/flag.png"</span> <span class="attr">width</span>=<span class="string">845</span> <span class="attr">height</span>=<span class="string">51/</span>&gt;</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">27</span></pre></td><td class="code"><pre><span class="line">            <span class="tag">&lt;<span class="name">br</span>&gt;</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">28</span></pre></td><td class="code"><pre><span class="line">            <span class="tag">&lt;<span class="name">input</span>&gt;</span><span class="tag">&lt;/<span class="name">input</span>&gt;</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">29</span></pre></td><td class="code"><pre><span class="line">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">30</span></pre></td><td class="code"><pre><span class="line">    <span class="tag">&lt;/<span class="name">body</span>&gt;</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">31</span></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span></pre></td></tr></table></figure>
+<p>Interesting! The source code has the font file (<code>hexfont.ttf</code>) used for this encryption. In this case my approach was download the font file and match the characters from the flag to the font.</p>
+<p><code>hexCTF{Don7_judge_a_B0Ok_by_1ts_c0v3r}</code></p>
+<h2 id="tj-misc-894pts"><a class="markdownIt-Anchor" href="#tj-misc-894pts"></a> <strong>T&amp;J</strong> - Misc (894pts)</h2>
+<blockquote>
+<p>Can you help Tom catch Jerry?<br />
+<br />
+Author: Idan</p>
+</blockquote>
+<p>This challenge was my personal goal in this CTF, mainly because it’s a <code>.pcap</code> challenge - my prefered.</p>
+<p>When I saw this usb <a href="./jerry.pcapng">.pcap</a> only with <code>URB_INTERRUPT in</code> frames I reminded my last usb capture from a previous CTF challenge: a capture from an usb flash drive and a keyboard. But this one don’t seems had the same standard in the <code>Leftover Capture Data</code>…</p>
+<p>Ok, if it wasn’t from a keyboard probably was from a mouse. Yeah the name of the challenge it <code>T&amp;J</code> - Tom &amp; Jerry (the cat and mouse). So I started learn how the <code>Leftover Capture Data</code> was decrypted and after some Googling I’ve found the <a href="https://www.usb.org/sites/default/files/documents/hid1_11.pdf" target="_blank" rel="noopener">USB specification</a>.</p>
+<p>There under the mouse specification I’ve found the way how mouse sends data (page 71): the 1<sup>st</sup> byte defines which button it’s pressed, the 2<sup>nd</sup> represents the X axis and the 3rd^byte the Y axis.</p>
+<p>So I exported it into a text file using <code>tshark</code>:</p>
+<p><code>$ tshark -r jerry.pcapng -Y &quot;(usb.transfer_type == 0x01) &amp;&amp; (usb.src == \&quot;1.2.1\&quot;) &amp;&amp; !(usb.capdata == 00:00:00:00:00:00:00:00)&quot; -T fields -e usb.capdata &gt; data.txt</code></p>
+<p>I get all the <code>Leftover Capture Data</code> into <code>data.txt</code> file.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">$ cat data.txt</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">0100000000000000</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">0100010000000100</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">0100010000000100</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line">0100010000000100</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line">...</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">8</span></pre></td><td class="code"><pre><span class="line">00ff0000ffff0000</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">9</span></pre></td><td class="code"><pre><span class="line">00ff0000ffff0000</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">10</span></pre></td><td class="code"><pre><span class="line">00ff0000ffff0000</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">11</span></pre></td><td class="code"><pre><span class="line">0100000000000000</span></pre></td></tr></table></figure>
+<p>Now I had to parse it and plot all the X-Y pairs into a “screen”. I reuse a python script inspired in one <a href="https://disconnect3d.pl/2016/05/02/Google-CTF-2016-For2-writeup/" target="_blank" rel="noopener">writeup</a> in disconnect3d’s blog when he uses the PIL python’s library to plot all de coordinates into a png image.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/env python</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> PIL <span class="keyword">import</span> Image</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> ctypes</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line">width = <span class="number">4048</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line">height = <span class="number">4048</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">8</span></pre></td><td class="code"><pre><span class="line">img = Image.new(<span class="string">"RGB"</span>, (width, height))</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">9</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">10</span></pre></td><td class="code"><pre><span class="line">red = (<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>) <span class="comment"># Skipping Right Mouse Btn, its not needed at all</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">11</span></pre></td><td class="code"><pre><span class="line">green = (<span class="number">0</span>, <span class="number">255</span>, <span class="number">0</span>)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">12</span></pre></td><td class="code"><pre><span class="line">blue = (<span class="number">0</span>, <span class="number">0</span>, <span class="number">255</span>)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">13</span></pre></td><td class="code"><pre><span class="line">default = (<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">14</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">15</span></pre></td><td class="code"><pre><span class="line">colormap = &#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">16</span></pre></td><td class="code"><pre><span class="line">    <span class="number">0</span>: red,</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">17</span></pre></td><td class="code"><pre><span class="line">    <span class="number">1</span>: green,</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">18</span></pre></td><td class="code"><pre><span class="line">    <span class="number">2</span>: blue</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">19</span></pre></td><td class="code"><pre><span class="line">&#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">20</span></pre></td><td class="code"><pre><span class="line">x = width/<span class="number">2</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">21</span></pre></td><td class="code"><pre><span class="line">y = height/<span class="number">2</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">22</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">23</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">with</span> open(<span class="string">'data.txt'</span>) <span class="keyword">as</span> f:</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">24</span></pre></td><td class="code"><pre><span class="line">    <span class="keyword">for</span> line <span class="keyword">in</span> f:</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">25</span></pre></td><td class="code"><pre><span class="line">        b0 = int(line[<span class="number">0</span>:<span class="number">2</span>],<span class="number">16</span>)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">26</span></pre></td><td class="code"><pre><span class="line">        b1 = int(line[<span class="number">2</span>:<span class="number">4</span>],<span class="number">16</span>)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">27</span></pre></td><td class="code"><pre><span class="line">        b2 = int(line[<span class="number">4</span>:<span class="number">6</span>],<span class="number">16</span>)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">28</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">29</span></pre></td><td class="code"><pre><span class="line">        <span class="comment"># byte0: 0==LBM, 1=RBM, 2=MBM</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">30</span></pre></td><td class="code"><pre><span class="line">        color = colormap.get(b0, default)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">31</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">32</span></pre></td><td class="code"><pre><span class="line">        <span class="comment"># byte1: X displacement</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">33</span></pre></td><td class="code"><pre><span class="line">        x_dis  = ctypes.c_int8(b1).value</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">34</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">35</span></pre></td><td class="code"><pre><span class="line">        <span class="comment"># byte2: Y displacement</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">36</span></pre></td><td class="code"><pre><span class="line">        y_dis = ctypes.c_int8(b2).value</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">37</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">38</span></pre></td><td class="code"><pre><span class="line">        x = x + x_dis</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">39</span></pre></td><td class="code"><pre><span class="line">        y = y + y_dis</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">40</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">41</span></pre></td><td class="code"><pre><span class="line">        <span class="comment">#print "line = ", line, "bytes =", bytes, x, y</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">42</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">43</span></pre></td><td class="code"><pre><span class="line">        img.putpixel((x, y), color)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">44</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">45</span></pre></td><td class="code"><pre><span class="line">img.save(<span class="string">"image.png"</span>)</span></pre></td></tr></table></figure>
+<p>And here is the image and our flag!</p>
+<p><img src="./image.png" alt="t&amp;j flag" /></p>
+
+      
+    </div>
+    <div class="article-footer">
+      <blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    
+    <li class="post-copyright-link hidden-xs">
+      <strong>Link to this article：</strong>
+      <a href="http://qui3t0wl.github.io/2020/04/17/hexion-ctf-2020/" title="Hexion CTF 2020" target="_blank" rel="external">http://qui3t0wl.github.io/2020/04/17/hexion-ctf-2020/</a>
+    </li>
+    
+  </ul>
+</blockquote>
+
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/Qui3t0wL" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="https://www.gravatar.com/avatar/aaec57675a04c01dc17626e93d5db54b?s=128" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/Qui3t0wL" target="_blank"><span class="text-dark">Qui3t0wL</span><small class="ml-1x">Security &amp; Forensics Enthusiast</small></a></h3>
+        <div>Interested guy in cyber!</div>
+      </div>
+    </figure>
+  </div>
+</div>
+
+
+    </div>
+  </article>
+  
+    
+  <section id="comments">
+  	
+      <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+      </div>
+    
+  </section>
+
+
+  
+</div>
+
+  <nav class="bar bar-footer clearfix" data-stick-bottom>
+  <div class="bar-inner">
+  
+  <ul class="pager pull-left">
+    
+    
+    <li class="next">
+      <a href="/2020/03/29/angstrom-ctf-2020/" title="AngstromCTF 2020"><span>Older&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+    </li>
+    
+    
+  </ul>
+  
+  
+  
+  <div class="bar-right">
+    
+    <div class="share-component" data-sites="facebook,twitter,linkedin" data-mobile-sites="facebook,twitter,linkedin"></div>
+    
+  </div>
+  </div>
+</nav>
+  
+
+
+</main>
+
+  <footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+	
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/Qui3t0wL" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
+        
+        <li><a href="https://twitter.com/mochotranquilo" target="_blank" title="Twitter" data-toggle=tooltip data-placement=top><i class="icon icon-twitter"></i></a></li>
+        
+        <li><a href="/atom.xml" target="_blank" title="Rss" data-toggle=tooltip data-placement=top><i class="icon icon-rss"></i></a></li>
+        
+    </ul>
+
+    <div class="copyright">
+    	
+        &copy; 2020 Qui3t0wL
+        
+        <div class="publishby">
+        	Theme by <a href="https://github.com/cofess" target="_blank"> cofess </a>base on <a href="https://github.com/cofess/hexo-theme-pure" target="_blank">pure</a>.
+        </div>
+    </div>
+</footer>
+  <script src="//cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+<script>
+window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+<script src="/js/plugin.min.js"></script>
+<script src="/js/application.js"></script>
+
+    <script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+
+
+
+
+   
+
+
+
+
+   
+    
+    <script defer>
+    var disqus_config = function () {
+        
+            this.page.url = 'http://qui3t0wl.github.io/2020/04/17/hexion-ctf-2020/';
+        
+        this.page.identifier = 'hexion-ctf-2020';
+    };
+    (function() { 
+        var d = document, s = d.createElement('script');  
+        s.src = '//' + 'blog-swziudw7bc' + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+
+
+
+
+  <script src="//cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.3.5/dist/jquery.fancybox.min.js"></script>
+  <script>
+  //利用 FancyBox 实现点击图片放大
+  $(document).ready(function() {
+    $('article img').not('[hidden]').not('.panel-body img').each(function() {
+      var $image = $(this);
+      var imageCaption = $image.attr('alt');
+      var $imageWrapLink = $image.parent('a');
+      if ($imageWrapLink.length < 1) {
+        var src = this.getAttribute('src');
+        var idx = src.lastIndexOf('?');
+        if (idx != -1) {
+          src = src.substring(0, idx);
+        }
+        $imageWrapLink = $image.wrap('<a href="' + src + '"></a>').parent('a');
+      }
+      $imageWrapLink.attr('data-fancybox', 'images');
+      if (imageCaption) {
+        $imageWrapLink.attr('data-caption', imageCaption);
+      }
+    });
+    $().fancybox({
+      selector: '[data-fancybox="images"]',
+      hash: false,
+      loop: false,
+    });
+  });
+  </script>
+
+
+
+
+
+</body>
+</html>
