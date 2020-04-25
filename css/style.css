@@ -264,13 +264,6 @@ html {
   -webkit-tap-highlight-color: transparent;
 }
 
-body {
-  font-family: "PingHei","PingFang SC",Helvetica Neue,"Work Sans","Hiragino Sans GB","Microsoft YaHei",SimSun,sans-serif;
-  font-size: 14px;
-  line-height: 1.42857;
-  color: #333333;
-  background-color: #fff;
-}
 input,
 button,
 select,
@@ -3254,8 +3247,9 @@ button.close {
   box-sizing: border-box;
 }
 
-
+html,
 body {
+  position: relative;
   overflow-x: hidden;
 }
 
@@ -5003,6 +4997,57 @@ a.label:focus {
   transition: all 0.2s ease-out;
 }
 
+/*
+ * Component: table
+ * css like github
+ * ----------------
+ */
+
+table {
+  border: 1px solid #f2f2f2;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td,
+table > tfoot > tr > th,
+table > tfoot > tr > td {
+  border: 1px solid #f2f2f2;
+}
+
+table > tbody > tr:nth-of-type(odd) {
+  background-color: #f8f8f8;
+}
+
+table > tbody > tr:hover {
+  background-color: #fbfbfb;
+}
+
+table {
+  padding: 0;
+  width: 100%;
+  max-width: 100%;
+  margin: 10px 0;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td,
+table > tfoot > tr > th,
+table > tfoot > tr > td {
+  padding: 6px 13px;
+}
+
+table > tbody + tbody {
+  border-top: 2px solid #f2f2f2;
+}
+
+table table {
+  background-color: #fff;
+}
+
 .modal button.close {
   position: absolute;
   right: 10px;
@@ -5484,9 +5529,7 @@ pre,
 .highlight {
   background: #fafafa;
   margin: 10px 0;
-  padding: 15px;
-  padding-bottom: 0px;
-  padding-top: 0px;
+  padding: 15px 10px;
   overflow: auto;
   font-size: 13px;
   color: #4d4d4c;
@@ -5500,7 +5543,12 @@ pre,
 
 code {
   text-shadow: 0 1px #fff;
-  padding: 0 0.3em;
+  padding: 0.2em 0.4em;
+  margin: 0 0.3em;
+  color: #555;
+  background: #eee;
+  border-radius: 3px;
+  font-size: 85%;
 }
 
 pre code {
@@ -5511,9 +5559,8 @@ pre code {
 
 .highlight {
   position: relative;
-  padding: 32px 12px 15px 12px;
-  border-top-left-radius: 4px;
-  border-top-right-radius: 4px;
+  padding: 32px 10px 0 10px;
+  border-radius: 4px;
 }
 
 .highlight:before {
@@ -5525,7 +5572,7 @@ pre code {
   left: 0;
   right: 0;
   background-color: #f6f6f6;
-  padding: 0 12px;
+  padding: 0 10px;
   border-top-left-radius: 4px;
   border-top-right-radius: 4px;
 }
@@ -5557,9 +5604,19 @@ pre code {
   padding: 0;
 }
 
-.highlight td {
+.highlight tr {
+  border: none;
+}
+
+.highlight td,
+.highlight th {
   border: none;
   padding: 0;
+}
+
+.highlight td.code,
+.highlight th.code {
+  width: 100% !important;
 }
 
 .highlight figcaption {
@@ -5580,10 +5637,8 @@ pre code {
 
 .highlight .gutter pre {
   text-align: right;
-  padding-right: 0px;
+  padding-right: 0;
   padding-left: 0;
-  padding-bottom: 0;
-  padding-top: 0;
   color: #ccc;
 }
 
